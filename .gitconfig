@@ -1,0 +1,36 @@
+[alias]
+	branches = branch -v
+	desc = describe --all
+	diffs = diff --stat
+	ff = merge --ff-only
+	hash = rev-parse --short
+	hashme = rev-parse --short head
+	hashup = rev-parse --short @{u}
+	myupstream = rev-parse --symbolic-full-name @{u}
+	newbranch = checkout -b
+	pushme = push origin head
+	slog = log --pretty=format:\"%ad %h > %an > %s\" --date=short --reverse --no-merges
+	stat = status -bs
+	subup = submodule update --init --recursive
+	superfetch = fetch --recurse-submodules
+	wdiff = diff --color-words
+	whatsnew =log --pretty=format:\"%ad %h > %an > %s\" --date=short --reverse --no-merges @{u}..head 
+	whatsup = log --pretty=format:\"%ad %h > %an > %s\" --date=short --reverse --no-merges head..@{u}
+	whereis = name-rev --name-only
+	shows = show --stat
+[color]
+	ui = true
+[core]
+	editor = subl --new-window --wait
+	excludesfile = /Users/alex/.gitignore_global
+[difftool "sourcetree"]
+	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+	path = 
+[merge]
+	defaultToUpstream = true
+[mergetool "sourcetree"]
+	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+	trustExitCode = true
+[user]
+	name = Alexander Carter
+	email = carter@tinyco.com

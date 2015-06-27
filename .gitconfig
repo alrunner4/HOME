@@ -1,5 +1,6 @@
 [alias]
 	branches = branch -v
+	current-release = "!f() { git branch | grep release; }; f"
 	desc = describe --all
 	diffs = diff --stat
 	ff = merge --ff-only
@@ -12,6 +13,7 @@
 	shows = show --stat
 	slog = log --pretty=format:\"%ad %h > %an > %s\" --date=short --reverse --no-merges
 	stat = status -bs
+	submit = "!f() { if [[ $1 == "develop" ]] || [[ $1 == "release/*" ]] || [[ $1 == "master" ]]; then git push origin HEAD:refs/for/$1; else echo "Usage: git cr branch, where branch=develop or release/X.Y"; fi; }; f"
 	subup = submodule update --init --recursive
 	superfetch = fetch --recurse-submodules
 	wdiff = diff --color-words
@@ -25,7 +27,7 @@
 	ui = true
 [core]
 	editor = subl --new-window --wait
-	excludesfile = /Users/alex/.gitignore_global
+	excludesfile = /Users/alexc/.gitignore_global
 	pager = less -FRSX
 [difftool "sourcetree"]
 	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
@@ -37,6 +39,6 @@
 	trustExitCode = true
 [user]
 	name = Alexander Carter
-	email = carter@tinyco.com
+	email = alexc@sigfig.com
 [push]
 	default = simple

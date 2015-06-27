@@ -4,25 +4,29 @@
 	diffs = diff --stat
 	ff = merge --ff-only
 	hash = rev-parse --short
-	hashme = rev-parse --short head
+	hashme = rev-parse --short HEAD 
 	hashup = rev-parse --short @{u}
 	myupstream = rev-parse --symbolic-full-name @{u}
 	newbranch = checkout -b
-	pushme = push origin head
+	pushme = push origin HEAD
+	shows = show --stat
 	slog = log --pretty=format:\"%ad %h > %an > %s\" --date=short --reverse --no-merges
 	stat = status -bs
 	subup = submodule update --init --recursive
 	superfetch = fetch --recurse-submodules
 	wdiff = diff --color-words
-	whatsnew =log --pretty=format:\"%ad %h > %an > %s\" --date=short --reverse --no-merges @{u}..head 
-	whatsup = log --pretty=format:\"%ad %h > %an > %s\" --date=short --reverse --no-merges head..@{u}
+	whatsnew =log --pretty=format:\"%ad %h > %an > %s\" --date=short --reverse --no-merges @{u}..HEAD
+	whatsup = log --pretty=format:\"%ad %h > %an > %s\" --date=short --reverse --no-merges HEAD..@{u}
+	whatsup-develop = log --pretty=format:\"%ad %h > %an > %s\" --date=short --reverse --no-merges HEAD..origin/develop
 	whereis = name-rev --name-only
-	shows = show --stat
+	wshow = show --color-words
+
 [color]
 	ui = true
 [core]
 	editor = subl --new-window --wait
 	excludesfile = /Users/alex/.gitignore_global
+	pager = less -FRSX
 [difftool "sourcetree"]
 	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
 	path = 
@@ -34,3 +38,5 @@
 [user]
 	name = Alexander Carter
 	email = carter@tinyco.com
+[push]
+	default = simple
